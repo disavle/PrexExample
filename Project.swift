@@ -1,5 +1,16 @@
 import ProjectDescription
 
+public var scripts: [TargetScript] {
+
+	var scripts = [TargetScript]()
+
+	let swiftLintScriptString = "SwiftLint/swiftlint"
+	let swiftLintScript = TargetScript.post(script: swiftLintScriptString, name: "SwiftLint")
+
+	scripts.append(swiftLintScript)
+	return scripts
+}
+
 let target = Target(
 	name: "Prex",
 	platform: .iOS,
@@ -11,6 +22,7 @@ let target = Target(
 	resources: [
 		"Prex/Resources/**"
 	],
+	scripts: scripts,
 	dependencies: [
 		.external(name: "SnapKit")
 	]
