@@ -1,4 +1,3 @@
-
 import ProjectDescription
 
 let target = Target(
@@ -12,7 +11,9 @@ let target = Target(
 	resources: [
 		"Prex/Resources/**"
 	],
-	dependencies: []
+	dependencies: [
+		.external(name: "SnapKit")
+	]
 )
 
 let project = Project(
