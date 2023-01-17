@@ -15,6 +15,19 @@ final class RMListViewController: UICollectionViewController {
 
 	// MARK: - Private
 	private var people: RMList?
+	private lazy var spinner: UIActivityIndicatorView = {
+		let spinner = UIActivityIndicatorView(style: .large)
+		view.addSubview(spinner)
+		spinner.snp.makeConstraints {
+			$0.center.equalToSuperview()
+		}
+		return spinner
+	}()
+	private lazy var  refreshControl: UIRefreshControl = {
+		let control = UIRefreshControl()
+		control.addTarget(self, action: #selector(refresh), for: .valueChanged)
+		return control
+	}()
 
 	// MARK: - Lifecycle
 	init(presenter: IRMListPresenter) {
@@ -35,11 +48,18 @@ final class RMListViewController: UICollectionViewController {
 		collectionView.showsVerticalScrollIndicator = false
 		title = "Rick and Morty"
 		navigationController?.navigationBar.prefersLargeTitles = true
+		collectionView.addSubview(refreshControl)
+		spinner.startAnimating()
 		presenter?.viewDidLoad()
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	// MARK: - Private func
+	@objc private func refresh() {
+		collectionView.reloadData()
 	}
 
 	// MARK: UICollectionViewDataSource
@@ -63,6 +83,8 @@ final class RMListViewController: UICollectionViewController {
 		guard let people = people?.results else { return cell }
 		presenter?.getImage(url: people[indexPath.row].image) { image in
 			cell.configure(image: image, text: people[indexPath.row].name)
+			self.spinner.stopAnimating()
+			self.refreshControl.endRefreshing()
 		}
 		return cell
 	}

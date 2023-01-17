@@ -53,7 +53,7 @@ extension RMListPresenter: IRMListPresenter {
 	func showNextScene(id: Int) {
 		router.openRMDetailScene(id: id)
 	}
-
+	// swiftlint:disable force_unwrapping
 	func getImage(url: String, completion: @escaping (UIImage) -> Void) {
 		DispatchQueue.global(qos: .userInteractive).async {
 			if let data = try? Data(contentsOf: URL(string: url)!) {

@@ -72,7 +72,7 @@ class RMListCell: UICollectionViewCell {
 		viewBack.addSubview(title)
 		title.snp.makeConstraints {
 			$0.centerX.equalToSuperview()
-			$0.bottom.equalToSuperview().offset(-10)
+			$0.bottom.equalToSuperview().offset(-5)
 			$0.width.equalToSuperview().offset(-10)
 		}
 	}
