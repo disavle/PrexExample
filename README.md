@@ -12,5 +12,7 @@ tuist generate
 ## Tools
 1. [Tuist](https://tuist.io/) 
 2. [SwiftLint](https://github.com/realm/SwiftLint)
+## API
+1. [RnMAPI](https://rickandmortyapi.com/documentation/#rest)
 
 Author of [Prex](https://github.com/marty-suzuki/Prex) - [Taiki Suzuki](https://github.com/marty-suzuki)
