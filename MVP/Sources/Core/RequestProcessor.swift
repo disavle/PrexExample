@@ -23,7 +23,7 @@ final class RequestProcessor: IRequestProcessor {
 
 	func load<T: IRequest>(_ request: T, completion: @escaping (Result<T.Model, Error>) -> Void) {
 		guard let url = try? requestConstructor.constructUrl(from: request) else {
-			completion(.failure(NSError(domain: "URL", code: 0)))
+			completion(.failure(NSError(domain: "Error", code: 0)))
 			return
 		}
 		let task = session.dataTask(with: url) { data, _, error in
@@ -31,7 +31,6 @@ final class RequestProcessor: IRequestProcessor {
 				completion(.failure(error))
 				return
 			}
-
 			if let data = data {
 				do {
 					let object = try self.decoder.decode(T.Model.self, from: data)
@@ -41,14 +40,13 @@ final class RequestProcessor: IRequestProcessor {
 				}
 				return
 			}
-
-			completion(.failure(NSError(domain: "RP", code: 1)))
+			completion(.failure(NSError(domain: "Error", code: 0)))
 		}
 		task.resume()
 	}
 	func execute<T: IRequest>(_ request: T, completion: @escaping (Error?) -> Void) {
 		guard let url = try? requestConstructor.constructUrl(from: request) else {
-			completion(NSError(domain: "RP2", code: 2))
+			completion(NSError(domain: "Error", code: 0))
 			return
 		}
 		let task = session.dataTask(with: url) { _, _, error in

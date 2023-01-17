@@ -9,11 +9,11 @@ import Foundation
 
 struct RMListRequest: IRequest {
 
-	typealias Model = [RMList]
+	typealias Model = RMList
 
-	let baseUrlString: String = "https://rickandmortyapi.com/api"
+	let baseUrlString: String = "https://rickandmortyapi.com"
 	var path: String {
-		"/character"
+		"/api/character"
 	}
 
 	var additionalParameters = [String: String]()

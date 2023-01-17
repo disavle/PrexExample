@@ -14,7 +14,7 @@ final class RMListViewController: UICollectionViewController {
 	var presenter: IRMListPresenter?
 
 	// MARK: - Private
-	private var people: [RMList]?
+	private var people: RMList?
 
 	// MARK: - Lifecycle
 	init(presenter: IRMListPresenter) {
@@ -44,7 +44,7 @@ final class RMListViewController: UICollectionViewController {
 
 	// MARK: UICollectionViewDataSource
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let people = people else { return 10 }
+		guard let people = people?.results else { return .zero }
 		return people.count
 	}
 
@@ -60,7 +60,7 @@ final class RMListViewController: UICollectionViewController {
 			withReuseIdentifier: RMListCell.id,
 			for: indexPath
 		) }
-		guard let people = people else { return cell }
+		guard let people = people?.results else { return cell }
 		presenter?.getImage(url: people[indexPath.row].image) { image in
 			cell.configure(image: image, text: people[indexPath.row].name)
 		}
@@ -70,7 +70,7 @@ final class RMListViewController: UICollectionViewController {
 
 // MARK: - IRMListViewController
 extension RMListViewController: IRMListViewController {
-	func configure(model: [RMList]) {
+	func configure(model: RMList) {
 		people = model
 		collectionView.reloadData()
 	}

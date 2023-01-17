@@ -14,7 +14,7 @@ final class RMListPresenter {
 
 	// MARK: - Private
 	private let router: IRMListRouter
-	private var RMList: RMList?
+	private var rmList: RMList?
 	private let RMListService: IRMListService
 
 	// MARK: - Lifecycle
@@ -27,18 +27,26 @@ final class RMListPresenter {
 // MARK: - IRMListPresenter
 extension RMListPresenter: IRMListPresenter {
 	func viewDidLoad() {
+		let group = DispatchGroup()
+		group.enter()
 		getList {[weak self] result in
 			guard let self = self else { return }
 			switch result {
 			case .success(let response):
-				self.view?.configure(model: response)
+				self.rmList = response
 			case .failure(let error):
 				fatalError(String(describing: error))
 			}
+			group.leave()
+		}
+		group.notify(queue: .main) { [weak self] in
+			guard let self = self else { return }
+			guard let rmList = self.rmList else { return }
+			self.view?.configure(model: rmList)
 		}
 	}
 
-	func getList(completion: @escaping (Result<[RMList], Error>) -> Void) {
+	func getList(completion: @escaping (Result<RMList, Error>) -> Void) {
 		RMListService.loadRMList(completion: completion)
 	}
 

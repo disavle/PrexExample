@@ -22,6 +22,7 @@ class RMListCell: UICollectionViewCell {
 	private lazy var image: UIImageView = {
 		let image = UIImageView()
 		image.layer.cornerRadius = 15
+		image.layer.masksToBounds = true
 		image.backgroundColor = .tertiarySystemBackground
 		return image
 	}()

@@ -7,8 +7,13 @@
 
 import Foundation
 
-// MARK: - Result
+// MARK: - RMList
 struct RMList: Codable {
+	let results: [Results]
+}
+
+// MARK: - Result
+struct Results: Codable {
 	let id: Int
 	let name: String
 	let image: String

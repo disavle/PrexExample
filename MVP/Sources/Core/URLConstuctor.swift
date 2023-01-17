@@ -9,10 +9,6 @@ import Foundation
 
 final class URLConstuctor: IURLConstuctor {
 
-	// MARK: - Hardcode user id
-
-	static let userId = "1"
-
 	// MARK: - IURLConstuctor
 
 	func constructUrl<T: IRequest>(from request: T) throws -> URLRequest {

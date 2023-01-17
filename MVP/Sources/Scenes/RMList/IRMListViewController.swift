@@ -8,5 +8,5 @@
 import Foundation
 
 protocol IRMListViewController: AnyObject {
-	func configure(model: [RMList])
+	func configure(model: RMList)
 }
