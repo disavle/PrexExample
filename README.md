@@ -1,5 +1,5 @@
-# PrexExample
-Prex iOS architecture demo
+# MVP + Routing
+MVP + Routing iOS architecture demo
 
 # How to build the project
 ```
@@ -14,5 +14,3 @@ tuist generate
 2. [SwiftLint](https://github.com/realm/SwiftLint)
 ## API
 1. [RnMAPI](https://rickandmortyapi.com/documentation/#rest)
-
-Author of [Prex](https://github.com/marty-suzuki/Prex) - [Taiki Suzuki](https://github.com/marty-suzuki)

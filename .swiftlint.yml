@@ -172,7 +172,7 @@ reporter: "xcode"
 
 # путь к исходникам для проверки кода
 included:
-  - Prex
+  - MVP
 
 excluded:
 

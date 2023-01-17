@@ -12,15 +12,15 @@ public var scripts: [TargetScript] {
 }
 
 let target = Target(
-	name: "Prex",
+	name: "MVP",
 	platform: .iOS,
 	product: .app,
-	bundleId: "DSAVELEV.Prex",
+	bundleId: "DSAVELEV.MVP",
 	deploymentTarget: .iOS(targetVersion: "15.0", devices: .iphone),
-	infoPlist: "Prex/Configs/Info.plist",
-	sources: ["Prex/Sources/**"],
+	infoPlist: "MVP/Configs/Info.plist",
+	sources: ["MVP/Sources/**"],
 	resources: [
-		"Prex/Resources/**"
+		"MVP/Resources/**"
 	],
 	scripts: scripts,
 	dependencies: [
@@ -29,7 +29,7 @@ let target = Target(
 )
 
 let project = Project(
-	name: "Prex",
+	name: "MVP",
 	targets: [target]
 )
 
