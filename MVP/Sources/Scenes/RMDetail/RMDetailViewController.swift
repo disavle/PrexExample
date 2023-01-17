@@ -10,13 +10,11 @@ import SnapKit
 
 final class RMDetailViewController: UICollectionViewController {
 
-	typealias People = [PersonList]
-
 	// MARK: - Internal
 	var presenter: IRMDetailPresenter?
 
 	// MARK: - Private
-	private var people: People?
+	private var people: [RMList]?
 
 	// MARK: - Lifecycle
 	init(presenter: IRMDetailPresenter) {
@@ -68,7 +66,7 @@ final class RMDetailViewController: UICollectionViewController {
 
 // MARK: - IRMDetailViewController
 extension RMDetailViewController: IRMDetailViewController {
-	func configure(model: [PersonList]) {
+	func configure(model: [RMList]) {
 		people = model
 	}
 }

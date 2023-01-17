@@ -12,7 +12,7 @@ final class RMListRouter: IRMListRouter {
 	weak var view: RMListViewController?
 
 	func openRMDetailScene(id: Int) {
-		guard let navigationController = view?.navigationController else { return }
+//		guard let navigationController = view?.navigationController else { return }
 //		let detailAssembly = RMDetailAssembly(networkAssembly: <#NetworkAssembly#>).assembly()
 //		navigationController.pushViewController(detailAssembly, animated: true)
 	}

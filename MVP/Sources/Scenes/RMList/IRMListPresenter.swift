@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol IRMListPresenter: AnyObject {
 	func viewDidLoad()
-	func getList()
+	func getList(completion: @escaping (Result<[RMList], Error>) -> Void)
 	func showNextScene(id: Int)
-	func configureView()
+	func getImage(url: String, completion: @escaping (UIImage) -> Void)
 }

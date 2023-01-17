@@ -16,7 +16,7 @@ final class RMDetailAssembly {
 	}
 
 	func assembly() -> UIViewController {
-		let requestProcessor = networkAssembly.requestProcessor
+//		let requestProcessor = networkAssembly.requestProcessor
 //		let currency = CurrencyAPIService(requestProcessor: requestProcessor)
 		let presenter = RMDetailPresenter()
 		let view = RMDetailViewController(presenter: presenter)

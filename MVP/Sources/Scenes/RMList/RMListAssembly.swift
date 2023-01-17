@@ -18,8 +18,11 @@ final class RMListAssembly {
 	func assembly() -> UIViewController {
 		let requestProcessor = networkAssembly.requestProcessor
 		let router = RMListRouter()
-//		let currency = CurrencyAPIService(requestProcessor: requestProcessor)
-		let presenter = RMListPresenter(router: router)
+		let RMListService = RMListService(requestProcessor: requestProcessor)
+		let presenter = RMListPresenter(
+			router: router,
+			RMListService: RMListService
+		)
 		let view = RMListViewController(presenter: presenter)
 		router.view = view
 		presenter.view = view

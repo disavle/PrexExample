@@ -10,13 +10,11 @@ import SnapKit
 
 final class RMListViewController: UICollectionViewController {
 
-	typealias People = [PersonList]
-
 	// MARK: - Internal
 	var presenter: IRMListPresenter?
 
 	// MARK: - Private
-	private var people: People?
+	private var people: [RMList]?
 
 	// MARK: - Lifecycle
 	init(presenter: IRMListPresenter) {
@@ -37,6 +35,7 @@ final class RMListViewController: UICollectionViewController {
 		collectionView.showsVerticalScrollIndicator = false
 		title = "Rick and Morty"
 		navigationController?.navigationBar.prefersLargeTitles = true
+		presenter?.viewDidLoad()
 	}
 
 	required init?(coder: NSCoder) {
@@ -61,15 +60,19 @@ final class RMListViewController: UICollectionViewController {
 			withReuseIdentifier: RMListCell.id,
 			for: indexPath
 		) }
-		cell.configure(image: UIImage(), text: "Rick Sanchez")
+		guard let people = people else { return cell }
+		presenter?.getImage(url: people[indexPath.row].image) { image in
+			cell.configure(image: image, text: people[indexPath.row].name)
+		}
 		return cell
 	}
 }
 
 // MARK: - IRMListViewController
 extension RMListViewController: IRMListViewController {
-	func configure(model: [PersonList]) {
+	func configure(model: [RMList]) {
 		people = model
+		collectionView.reloadData()
 	}
 }
 
