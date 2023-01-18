@@ -88,6 +88,10 @@ final class RMListViewController: UICollectionViewController {
 		}
 		return cell
 	}
+
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		presenter?.showNextScene(id: indexPath.row)
+	}
 }
 
 // MARK: - IRMListViewController
