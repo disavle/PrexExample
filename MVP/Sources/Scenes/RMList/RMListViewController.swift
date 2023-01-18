@@ -90,7 +90,8 @@ final class RMListViewController: UICollectionViewController {
 	}
 
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		presenter?.showNextScene(id: indexPath.row)
+		guard let people = people?.results else { return }
+		presenter?.showNextScene(id: people[indexPath.row].id)
 	}
 }
 

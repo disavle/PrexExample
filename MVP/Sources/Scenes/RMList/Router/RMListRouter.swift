@@ -5,7 +5,7 @@
 //  Created by Savelev Dmitriy on 17.01.2023.
 //
 
-import Foundation
+import UIKit
 
 final class RMListRouter: IRMListRouter {
 
@@ -13,7 +13,8 @@ final class RMListRouter: IRMListRouter {
 
 	func openRMDetailScene(id: Int) {
 //		guard let navigationController = view?.navigationController else { return }
-//		let detailAssembly = RMDetailAssembly(networkAssembly: <#NetworkAssembly#>).assembly()
-//		navigationController.pushViewController(detailAssembly, animated: true)
+		let detailAssembly = RMDetailAssembly(networkAssembly: NetworkAssembly()).assembly(id: id)
+		view?.present(UINavigationController(rootViewController: detailAssembly), animated: true)
+//		navigationController.popToViewController(detailAssembly, animated: true)
 	}
 }
