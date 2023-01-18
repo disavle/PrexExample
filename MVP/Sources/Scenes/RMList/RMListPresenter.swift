@@ -47,7 +47,7 @@ extension RMListPresenter: IRMListPresenter {
 	}
 
 	func getList(completion: @escaping (Result<RMList, Error>) -> Void) {
-		RMListService.loadRMList(completion: completion)
+		RMListService.loadRMList(pageNum: Int.random(in: 1...43), completion: completion)
 	}
 
 	func showNextScene(id: Int) {

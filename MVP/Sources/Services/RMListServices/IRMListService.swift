@@ -8,5 +8,5 @@
 import Foundation
 
 protocol IRMListService: AnyObject {
-	func loadRMList(completion: @escaping (Result<RMList, Error>) -> Void)
+	func loadRMList(pageNum: Int, completion: @escaping (Result<RMList, Error>) -> Void)
 }

@@ -59,7 +59,7 @@ final class RMListViewController: UICollectionViewController {
 
 	// MARK: - Private func
 	@objc private func refresh() {
-		collectionView.reloadData()
+		presenter?.viewDidLoad()
 	}
 
 	// MARK: UICollectionViewDataSource

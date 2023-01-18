@@ -16,7 +16,9 @@ struct RMListRequest: IRequest {
 		"/api/character"
 	}
 
-	var additionalParameters = ["page": String(Int.random(in: 1...42))]
+	var pageNum: Int
+
+	var additionalParameters: [String: String] { return ["page": pageNum.description] }
 
 	var method: HttpMethod = .get
 

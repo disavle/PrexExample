@@ -16,8 +16,8 @@ final class RMListService: IRMListService {
 		self.requestProcessor = requestProcessor
 	}
 
-	func loadRMList(completion: @escaping (Result<RMList, Error>) -> Void) {
-		let request = RMListRequest()
+	func loadRMList(pageNum: Int, completion: @escaping (Result<RMList, Error>) -> Void) {
+		let request = RMListRequest(pageNum: pageNum)
 		requestProcessor.load(request) { result in
 			switch result {
 			case .success(let resultDetails):
