@@ -173,6 +173,7 @@ reporter: "xcode"
 # путь к исходникам для проверки кода
 included:
   - RnM
+  - RnMCS
 
 excluded:
 

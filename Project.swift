@@ -28,8 +28,25 @@ let target = Target(
 	]
 )
 
+let targetCS = Target(
+    name: "RnMCS",
+    platform: .iOS,
+    product: .app,
+    bundleId: "DSAVELEV.CleanSwift",
+    deploymentTarget: .iOS(targetVersion: "15.0", devices: .iphone),
+    infoPlist: "RnMCS/Configs/Info.plist",
+    sources: ["RnMCS/Sources/**"],
+    resources: [
+	  "RnMCS/Resources/**"
+    ],
+    scripts: scripts,
+    dependencies: [
+	  .external(name: "SnapKit")
+    ]
+)
+
 let project = Project(
 	name: "RnM",
-	targets: [target]
+	targets: [target, targetCS]
 )
 
